@@ -101,7 +101,7 @@ a{
 }
 .form-style-5 .number {
 	background: #eceb7d;
-	color: #fff;
+	color: rgb(7, 7, 7);
 	height: 30px;
 	width: 30px;
 	display: inline-block;
