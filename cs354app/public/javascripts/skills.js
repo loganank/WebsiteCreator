@@ -11,3 +11,7 @@ function generateSkills(){
     label.textContent="Skill";
     fieldset.appendChild(label);
 }
+
+function removeSkill() {
+    
+}

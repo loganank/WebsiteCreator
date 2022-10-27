@@ -135,3 +135,7 @@ a{
 {
 	background: #e4e27c;
 }
+
+textarea {
+	resize: none;
+}
