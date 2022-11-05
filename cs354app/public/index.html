@@ -15,16 +15,18 @@
 <header><div class="header1"><a href="login.html">Login</a></div><div class="header2"><a href="samples.html">Samples</a></div>
 </header>
 <div class="form-style-5">
-  <form>
+  <form name="initialForm" action="/users/newUser" method="POST" enctype="multipart/form-data">
   <fieldset id="fieldset1">
   <legend><span class="number">1</span> Website Info</legend>
-  <input type="text" name="field1" placeholder="Your Name *">
-  <input type="email" name="field2" placeholder="Your Email *">
-  <textarea name="field3" placeholder="About yourself"></textarea>
+  <input type="text" name="actualname" placeholder="Your Name *">
+  <input type="email" name="email" placeholder="Your Email *">
+  <textarea name="about_me" placeholder="About yourself"></textarea>
   <input id="uploadResId" type="file" name="file1" hidden/>
   <input id="resId" type="button" value="Upload Resume"/>
-  <input id="vidId" type="button" value="Upload Video"/>
   <input id="uploadVidId" type="file" name="file2" hidden/>
+  <input id="vidId" type="button" value="Upload Project Videos"/>
+  <input id="uploadPicId" type="file" name="file3" hidden/>
+  <input id="picId" type="button" value="Add Your Profile Picture"/>
   <label for="job">Skills:</label>
   <select id="job" name="field5">
   <optgroup label="Skills">
@@ -54,12 +56,12 @@
   <legend><span class="number">2</span> Additional Info</legend>
   <textarea name="field3" placeholder="About Your School"></textarea>
   </fieldset>
-  <input type="submit" value="Generate Website" />
+  <input type="submit" value="Generate Website"/>
   </form>
   </div>
   <footer></footer>
 </body>
 <script src="./javascripts/uploadscript.js"></script>
-<script src="./javascripts/newskill.js"></script>
+<script src="./javascripts/skills.js"></script>
 
 </html>

@@ -6,7 +6,9 @@
 html, body{
   height: 100%;
 }
-
+input{
+	border-radius: 50px;
+}
 a{
   text-decoration: none;
   text-shadow: 1px 1px #c9b351;
@@ -33,6 +35,7 @@ a{
 }
 
 .form-style-5{
+  border-radius: 1000px;
   position: relative;
   margin: auto;
   top: 10%;
