@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'Lemon/Milk';
+    src: url('./images/LEMONMILK-Light.otf');
+  }
+  
+  html, body{
+    height: 100%;
+  }
+  input{
+      border-radius: 50px;
+  }
+  
+  .questionaire_container{
+    border-radius: 1000px;
+    position: relative;
+    margin: auto;
+    top: 10%;
+      max-width: 500px;
+      padding: 10px 20px;
+      background: #f4f7f8;
+      padding: 20px;
+      background: #f4f7f8;
+      border-radius: 8px;
+      font-family: "Lemon/Milk", Georgia, "Times New Roman", Times, serif;
+  }
+  .questionaire_container, .form__input, legend {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+  }
+  .questionaire_container input[type="text"],
+  .questionaire_container input[type="number"],
+  .questionaire_container textarea {
+      font-family: "Lemon/Milk", Georgia, "Times New Roman", Times, serif;
+      background: rgba(255,255,255,.1);
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      margin: 0;
+      outline: 0;
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box; 
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box; 
+      background-color: #e8eeef;
+      color:#8a97a0;
+      -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+      margin-bottom: 30px;
+  }
+  .questionaire_container input[type="text"]:focus,
+  .questionaire_container input[type="number"]:focus,
+  .questionaire_container textarea:focus{
+      background: #d2d9dd;
+  }
+  .questionaire_container .text,
+  .questionaire_container .number{
+      background: #eceb7d;
+      color: rgb(7, 7, 7);
+      height: 30px;
+      width: 30px;
+      display: inline-block;
+      font-size: 0.8em;
+      margin-right: 4px;
+      line-height: 30px;
+      text-align: center;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+      border-radius: 15px 15px 15px 0px;
+  }
+  
+  .questionaire_container input[type="submit"]
+  {
+      position: relative;
+      display: block;
+      padding: 19px 39px 18px 39px;
+      color: rgb(7, 7, 7);
+      margin: 0 auto;
+      background: #eceb7d;
+      font-size: 18px;
+      text-align: center;
+      font-style: normal;
+      width: 100%;
+      border: 1px solid #f7f6ed;
+      border-width: 1px 1px 3px;
+      margin-bottom: 10px;
+  }
+.questionaire_container input[type="submit"]:hover
+{
+    background: #e4e27c;
+}
+
+textarea {
+    resize: none;
+}
+
+.form__message {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form__message--success {
+    color: #4bb544;
+}
+
+.form__message--error {
+    color: #cc3333;
+}
+
+.form__input-group {
+    margin-bottom: 1rem;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: 50px;
+    border: 5px solid #eceb7d;
+    outline: none;
+    background: #eceb7d;
+    transition: background 0.2s, border-color 0.2s;
+    color: #000000;
+}
+
+.form__input:focus {
+    border-color: #eceb7d;
+    background: #ffffff;
+}
+
+.form__input--error {
+    color: #cc3333;
+    border-color: #cc3333;
+}
+
+.form__input-error-message {
+    color: #cc3333;
+}

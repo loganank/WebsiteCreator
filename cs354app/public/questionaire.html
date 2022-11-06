@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Questionaire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/questionaire.css">
+    <link rel="shortcut icon" type="image/ico" href="./images/question_mark.jpg">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="questionaire_container">
+        <form class="form" id="questionaire_form">
+            <legend><span class="number">1</span></legend>
+            <p>How satisfied are you with the website generation process?</p>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="answer_1" placeholder="Give a number from 1 to 5">
+                <div class="form__input-error-message"></div>
+            </div>
+            <legend><span class="number">2</span></legend>
+            <p>How satisfied are you with the provided files?</p>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="answer_2" placeholder="Give a number from 1 to 5">
+                <div class="form__input-error-message"></div>
+            </div>
+            <legend><span class="number">3</span></legend>
+            <p>How easy was it to navigate and use the website builder?</p>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="answer_3" placeholder="Give a number from 1 to 5">
+                <div class="form__input-error-message"></div>
+            </div>
+            <legend><span class="number">4</span></legend>
+            <p>How likely are you to use this tool again or recommend it to a friend?</p>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="answer_4" placeholder="Give a number from 1 to 5">
+                <div class="form__input-error-message"></div>
+            </div>
+            <legend><span class="number">5</span></legend>
+            <p>Is there anything that you would recommend changed with the builder or that you didn't like?</p>
+            <div class="form__input-group">
+                <textarea class="form__input" id="answer_5" placeholder="Explain"></textarea>
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__message form__message--error"></div>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    <script src="./javascripts/questionaire.js"></script>
+</body>
