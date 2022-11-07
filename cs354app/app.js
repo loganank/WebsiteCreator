@@ -17,7 +17,7 @@ const express = require('express'),
 db = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
-  password: 'Nitocket14$',
+  password: '',
   database: 'cs354'
 })
 
