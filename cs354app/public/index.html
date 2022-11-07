@@ -19,7 +19,7 @@
   <fieldset id="fieldset1">
   <legend><span class="number">1</span> Website Info</legend>
   <input type="text" name="actualname" placeholder="Your Name *">
-  <input type="email" name="email" placeholder="Your Email *">
+  <input type="email" name="email" id="email" placeholder="Your Email *">
   <textarea name="about_me" placeholder="About yourself"></textarea>
   <input id="uploadResId" type="file" name="file1" hidden/>
   <input id="resId" type="button" value="Upload Resume"/>
@@ -56,12 +56,11 @@
   <legend><span class="number">2</span> Additional Info</legend>
   <textarea name="field3" placeholder="About Your School"></textarea>
   </fieldset>
-  <input type="submit" value="Generate Website"/>
+  <input type="submit" value="Generate Website" id="submit"/>
   </form>
   </div>
   <footer></footer>
 </body>
 <script src="./javascripts/uploadscript.js"></script>
 <script src="./javascripts/skills.js"></script>
-
 </html>

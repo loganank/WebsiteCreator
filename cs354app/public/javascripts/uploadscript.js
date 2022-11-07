@@ -1,6 +1,7 @@
 var res = document.getElementById('resId');
 var vid = document.getElementById('vidId');
-var pic = document.getElementById('picId')
+var pic = document.getElementById('picId');
+var submit = document.getElementById('submit');
 if(res){
   res.addEventListener('click', openResDialog, false);
 }
@@ -9,6 +10,9 @@ if(vid){
 }
 if(pic){
   pic.addEventListener('click', openPicDialog, false);
+}
+if(submit) {
+  submit.addEventListener('click', setUsername, false);
 }
 
 function openResDialog() {
@@ -21,4 +25,9 @@ function openVidDialog() {
 
 function openPicDialog() {
   document.getElementById('uploadPicId').click();
+}
+
+function setUsername() {
+  let username = document.getElementById('email').value;
+  sessionStorage.setItem("email", username);
 }

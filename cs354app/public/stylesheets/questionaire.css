@@ -68,7 +68,7 @@
       border-radius: 15px 15px 15px 0px;
   }
   
-  .questionaire_container input[type="submit"]
+  .questionaire_container input[type="button"]
   {
       position: relative;
       display: block;
@@ -84,7 +84,7 @@
       border-width: 1px 1px 3px;
       margin-bottom: 10px;
   }
-.questionaire_container input[type="submit"]:hover
+.questionaire_container input[type="button"]:hover
 {
     background: #e4e27c;
 }

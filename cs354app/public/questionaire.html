@@ -11,35 +11,36 @@
 
 <body>
     <div class="questionaire_container">
-        <form class="form" id="questionaire_form">
+        <script src="./javascripts/questionaire.js"></script>
+        <form class="form" id="questionaire_form" name="questionaireForm" action="/users/submitQuestionaire" method="POST" enctype="multipart/form-data">
+            <input name="email" id="email" hidden>
             <legend><span class="number">1</span>How satisfied are you with the website generation process?</legend>
             <div class="form__input-group">
-                <input type="text" class="form__input" id="answer_1" placeholder="Give a number from 1 to 5">
+                <input type="text" class="form__input" name="answer_1" id="answer_1" placeholder="Give a number from 1 to 5">
                 <div class="form__input-error-message"></div>
             </div>
             <legend><span class="number">2</span>How satisfied are you with the provided files?</legend>
             <div class="form__input-group">
-                <input type="text" class="form__input" id="answer_2" placeholder="Give a number from 1 to 5">
+                <input type="text" class="form__input" name="answer_2" id="answer_2" placeholder="Give a number from 1 to 5">
                 <div class="form__input-error-message"></div>
             </div>
             <legend><span class="number">3</span>How easy was it to navigate and use the website builder?</legend>
             <div class="form__input-group">
-                <input type="text" class="form__input" id="answer_3" placeholder="Give a number from 1 to 5">
+                <input type="text" class="form__input" name="answer_3" id="answer_3" placeholder="Give a number from 1 to 5">
                 <div class="form__input-error-message"></div>
             </div>
             <legend><span class="number">4</span>How likely are you to use this tool again or recommend it to a friend?</legend>
             <div class="form__input-group">
-                <input type="text" class="form__input" id="answer_4" placeholder="Give a number from 1 to 5">
+                <input type="text" class="form__input" name="answer_4" id="answer_4" placeholder="Give a number from 1 to 5">
                 <div class="form__input-error-message"></div>
             </div>
             <legend><span class="number">5</span>Is there anything that you would recommend changed with the builder or that you didn't like?</legend>
             <div class="form__input-group">
-                <textarea class="form__input" id="answer_5" placeholder="Explain"></textarea>
+                <textarea class="form__input" name="answer_5" id="answer_5" placeholder="Explain"></textarea>
                 <div class="form__input-error-message"></div>
             </div>
             <div class="form__message form__message--error"></div>
-            <input type="submit" value="Submit"/>
+            <input type="button" value="Submit" onclick="validateForm()"/>
         </form>
     </div>
-    <script src="./javascripts/questionaire.js"></script>
 </body>
