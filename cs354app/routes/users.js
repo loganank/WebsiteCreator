@@ -19,7 +19,7 @@ router.post('/newUser', upload.none(), function(req, res) {
   ];
   db.query(sql, [values], function(err, data, fields) {
     if (err) throw err;
-    res.redirect('http://localhost:7777/login.html');
+    res.redirect('http://localhost:7777/questionaire.html');
   })
 });
 
