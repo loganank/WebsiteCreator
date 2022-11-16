@@ -63,28 +63,29 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         //prevent form from being submitted through page refresh or submission
         e.preventDefault();
+        
+        
 
-        //!!! Read more on AJAX/Fetch/SQL login !!!
-        var loginUsername=document.getElementById("loginUsername").value;
-        var loginPassword=document.getElementById("loginPassword").value;
+        let loginUsername=document.getElementById("loginUsername").value;
+        let loginPassword=document.getElementById("loginPassword").value;
+        
+        
+        
+        // if (loginUsername == username && loginPassword == pass)
+        // {
+        //     alert("login successful!");
+        //     window.location.replace("index.html")
+        //     return false;
+        // }
 
-        if (loginUsername =="username" && loginPassword == "password")
-        {
-            alert("login successful!");
-            window.location.replace("index.html")
-            return false;
-        }
-
-        else {
-            setFormMessage(loginForm, "error", "Invalid username/password");
-        }
+        // else {
+        //     setFormMessage(loginForm, "error", "Invalid username/password");
+        // }
     });
 
     //upon submitting createaccount form, grab event object
     createAccountForm.addEventListener("submit", e => 
     {
-        //prevent form from being submitted through page refresh or submission
-        e.preventDefault();
 
         let username=document.getElementById("username").value;
         let email=document.getElementById("email").value;
@@ -94,11 +95,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
         if (pass == pass2)
         {
-            
-            
             alert("password confirmation successful!");
-
-            
             
             //when click login, remove login from hidden
             loginForm.classList.remove("form--hidden");
