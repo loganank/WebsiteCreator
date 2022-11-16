@@ -114,6 +114,7 @@ a{
 	text-align: center;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
 	border-radius: 15px 15px 15px 0px;
+	margin-top: 5px;
 }
 
 .form-style-5 input[type="submit"],
@@ -141,4 +142,15 @@ a{
 
 textarea {
 	resize: none;
+}
+
+.deleteButton {
+	border: none;
+	float: right;
+	color: red;
+	background-color: rgb(243, 202, 202);
+
+} .deleteButton:hover {
+	cursor: pointer;
+	background-color: rgb(241, 172, 172);
 }

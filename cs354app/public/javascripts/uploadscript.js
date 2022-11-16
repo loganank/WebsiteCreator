@@ -12,7 +12,27 @@ if(pic){
   pic.addEventListener('click', openPicDialog, false);
 }
 if(submit) {
-  submit.addEventListener('click', setUsername, false);
+  submit.addEventListener('click', function (event) {
+    var username = document.getElementById('username');
+    var email = document.getElementById('email')
+    var valid = new Boolean(true);
+    var msg = "";
+
+    if (username.value == "") {
+      valid = false;
+      msg += "Please enter an username\n";
+    }
+    if (email.value == "") {
+      valid = false;
+      msg += "Please enter an email\n";
+    }
+    
+    // validation errors
+    if (!valid) {
+      alert(msg);
+      event.preventDefault(); 
+    }
+  }, false);
 }
 
 function openResDialog() {
@@ -27,7 +47,8 @@ function openPicDialog() {
   document.getElementById('uploadPicId').click();
 }
 
-function setUsername() {
-  let username = document.getElementById('email').value;
-  sessionStorage.setItem("email", username);
-}
+// function setUsername() {
+//   let username = document.getElementById('email').value;
+//   sessionStorage.setItem("email", username);
+//   alert('hello');
+// }
