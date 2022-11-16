@@ -41,4 +41,18 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
     })
 });
 
+router.post('/createAccount', upload.none(), function(req, res) {
+  console.log(req.body);
+  let sql = `INSERT INTO createdUsers(username,email,pass) VALUES (?)`;
+  let values = [
+    req.body.username,
+    req.body.email,
+    req.body.pass,
+  ];
+  db.query(sql, [values], function(err, data, fields) {
+    if (err) throw err;
+    res.redirect('http://localhost:7777/login.html');
+  })
+});
+
 module.exports = router;

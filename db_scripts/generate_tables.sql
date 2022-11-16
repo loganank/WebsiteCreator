@@ -60,3 +60,10 @@ answer_5 VARCHAR(1000),
 PRIMARY KEY (answer_id),
 FOREIGN KEY (username) REFERENCES users(username)
 );
+
+CREATE TABLE IF NOT EXISTS createdUsers(
+username VARCHAR(50) NOT NULL UNIQUE,
+email VARCHAR(100) NOT NULL,
+pass VARCHAR(100) NOT NULL,
+PRIMARY KEY (username)
+);
