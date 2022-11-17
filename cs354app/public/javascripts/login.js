@@ -71,16 +71,16 @@ document.addEventListener("DOMContentLoaded", () =>
         
         
         
-        // if (loginUsername == username && loginPassword == pass)
-        // {
-        //     alert("login successful!");
-        //     window.location.replace("index.html")
-        //     return false;
-        // }
+        if (loginUsername == "username" && loginPassword == "password")
+        {
+            alert("login successful!");
+            window.location.replace("index.html")
+            return false;
+        }
 
-        // else {
-        //     setFormMessage(loginForm, "error", "Invalid username/password");
-        // }
+        else {
+            setFormMessage(loginForm, "error", "Invalid username/password");
+        }
     });
 
     //upon submitting createaccount form, grab event object
