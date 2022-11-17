@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
         if (pass == pass2)
         {
-            alert("password confirmation successful!");
+            //alert("password confirmation successful!");
             
             //when click login, remove login from hidden
             loginForm.classList.remove("form--hidden");
