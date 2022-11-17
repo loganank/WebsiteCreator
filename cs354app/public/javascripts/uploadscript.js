@@ -26,7 +26,19 @@ if(submit) {
       valid = false;
       msg += "Please enter an email\n";
     }
-    
+
+    var skills = document.getElementsByClassName("skill");
+    var skillsFound = [];
+  
+    for (let i = 0; i < skills.length; i++) {
+      if (skillsFound.includes(skills[i].value)) {
+        valid = false;
+        msg += "Cannot have duplicate skills\n";
+        break;
+      }
+      skillsFound.push(skills[i].value);
+    }
+
     // validation errors
     if (!valid) {
       alert(msg);
@@ -47,8 +59,8 @@ function openPicDialog() {
   document.getElementById('uploadPicId').click();
 }
 
-// function setUsername() {
-//   let username = document.getElementById('email').value;
-//   sessionStorage.setItem("email", username);
-//   alert('hello');
-// }
+function setUsername() {
+  let username = document.getElementById('email').value;
+  sessionStorage.setItem("email", username);
+  alert('hello');
+}

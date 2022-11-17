@@ -48,7 +48,7 @@ function generateSkills(){
 
     var skills = document.getElementById("skillsField");
     var label = document.createElement("label");
-    label.for = "job";
+    label.for = "skill";
     // label.textContent="Skill:";
     
     var deleteButton = document.createElement("button");
@@ -65,7 +65,7 @@ function generateSkills(){
 
 
     var select = document.createElement("select");
-    select.className = "job";
+    select.className = "skill";
     select.name = "field6";
     label.appendChild(select);
    
