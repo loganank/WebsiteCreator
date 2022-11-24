@@ -13,28 +13,28 @@
 
 <body>
   <header>
-    <div class="header1"><a href="login.html">Login</a></div>
+    <div class="header1"><a href="./pdfs/resume2022.pdf">Login</a></div>
     <div class="header2"><a href="questionaire.html">Questionaire</a></div>
   </header>
   <div class="form-style-5">
-    <form name="initialForm" action="/users/newUser" method="POST" enctype="multipart/form-data">
+    <form name="initialForm" action="/users/userInfo" method="POST" enctype="multipart/form-data">
       <fieldset id="fieldset1">
         <legend><span class="number">1</span> User Info</legend>
         <input type="text" name="actualname" id="username" placeholder="Your Name *">
         <input type="email" name="email" id="email" placeholder="Your Email *">
         <textarea name="about_me" placeholder="About yourself"></textarea>
 
-        <input id="uploadResId" type="file" name="file1" hidden />
+        <input id="uploadResId" type="file" name="resume" hidden />
         <input id="resId" type="button" value="Upload Resume" />
-        <input id="uploadVidId" type="file" name="file2" hidden />
+        <input id="uploadVidId" type="file" name="projectvid" hidden />
         <input id="vidId" type="button" value="Upload Project Videos" />
-        <input id="uploadPicId" type="file" name="file3" hidden />
+        <input id="uploadPicId" type="file" name="profilepic" hidden />
         <input id="picId" type="button" value="Add Your Profile Picture" />
 
         <legend><span class="number">2</span> User Skills</legend>
         <div id="skillsField">
           <!-- <label for="job">Skill:</label> -->
-          <select class="skill" name="field5">
+          <select class="skill" name="skills">
             <optgroup label="Skills">
               <option value="javascriptval">JavaScript</option>
               <option value="htmlval">HTML5</option>
@@ -62,7 +62,7 @@
       <input id="newSkill" type="button" value="Add Skill">
       <fieldset>
         <legend><span class="number">3</span> Additional Info</legend>
-        <textarea name="field3" placeholder="About Your School"></textarea>
+        <textarea name="additionalinfo" placeholder="About Your School"></textarea>
       </fieldset>
       <input type="submit" value="Generate Website" id="submit" />
     </form>

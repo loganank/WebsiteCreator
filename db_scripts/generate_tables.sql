@@ -5,41 +5,53 @@ DROP TABLE IF EXISTS videos;
 DROP TABLE IF EXISTS resumes;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS answers;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS userInfo;
+DROP TABLE IF EXISTS createdUsers;
+-- delete from userInfo where userInfo.username = 'kyle@gmail.com';
+-- delete from videos where videos.username = 'kyle@gmail.com';
+-- delete from pics where pics.username = 'kyle@gmail.com';
+-- delete from resumes where resumes.username ='kyle@gmail.com';
+-- select * from userInfo;
+-- select * from resumes;
+-- select * from videos;
+-- select * from pics;
 
-CREATE TABLE IF NOT EXISTS users(
+
+CREATE TABLE IF NOT EXISTS userInfo(
  user_id INT AUTO_INCREMENT,
  actualname VARCHAR(100) NOT NULL,
  username VARCHAR(50) NOT NULL UNIQUE,
- pass VARCHAR(100) NOT NULL,
  email VARCHAR(100) NOT NULL,
  about_me VARCHAR(1000),
+ skills VARCHAR(1000),
+ additionalinfo VARCHAR(1000),
  PRIMARY KEY(user_id)
 );
+
 CREATE TABLE IF NOT EXISTS resumes(
  resume_id INT AUTO_INCREMENT,
- resume_location VARCHAR(100) NOT NULL,
- user_id INT NOT NULL,
+ resume_location VARCHAR(1000) NOT NULL,
+ username VARCHAR(50) NOT NULL UNIQUE,
  date_added DATE,
  PRIMARY KEY (resume_id),
- FOREIGN KEY (user_id) REFERENCES users(user_id)
+ FOREIGN KEY (username) REFERENCES userInfo(username)
 );
 
 CREATE TABLE IF NOT EXISTS videos(
  vid_id INT AUTO_INCREMENT,
- vid_location VARCHAR(100) NOT NULL,
- user_id INT NOT NULL,
+ vid_location VARCHAR(1000) NOT NULL,
+ username VARCHAR(50) NOT NULL UNIQUE,
  date_added DATE,
  PRIMARY KEY (vid_id),
- FOREIGN KEY (user_id) REFERENCES users(user_id)
+ FOREIGN KEY (username) REFERENCES userInfo(username)
 );
 CREATE TABLE IF NOT EXISTS pics(
  pic_id INT AUTO_INCREMENT,
- pic_name VARCHAR(80) NOT NULL,
- user_id INT NOT NULL,
+ pic_location VARCHAR(1000) NOT NULL,
+ username VARCHAR(50) NOT NULL UNIQUE,
  date_added DATE,
  PRIMARY KEY (pic_id),
- FOREIGN KEY (user_id) REFERENCES users(user_id)
+ FOREIGN KEY (username) REFERENCES userInfo(username)
 );
 
 CREATE TABLE IF NOT EXISTS skills(
@@ -47,7 +59,7 @@ skill_id INT AUTO_INCREMENT,
 user_id INT NOT NULL,
 skill_description VARCHAR(1000),
 PRIMARY KEY (skill_id),
-FOREIGN KEY (user_id) REFERENCES users(user_id)
+FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
 );
 CREATE TABLE IF NOT EXISTS answers(
 answer_id INT AUTO_INCREMENT,
@@ -58,7 +70,7 @@ answer_3 INT NOT NULL,
 answer_4 INT NOT NULL,
 answer_5 VARCHAR(1000),
 PRIMARY KEY (answer_id),
-FOREIGN KEY (username) REFERENCES users(username)
+FOREIGN KEY (username) REFERENCES userInfo(username)
 );
 
 CREATE TABLE IF NOT EXISTS createdUsers(

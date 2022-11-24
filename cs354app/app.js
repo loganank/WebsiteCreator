@@ -17,7 +17,7 @@ usersRouter = require('./routes/users');
 db = mysql.createConnection({
 host: '127.0.0.1',
 user: 'root',
-password: 'Thestain12!',
+password: 'Nitocket14$',
 database: 'cs354'
 })
 
@@ -28,11 +28,11 @@ port: 7777
 
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use(cors());
-
+app.set("view engine", "ejs");
 
 
 // router user input
