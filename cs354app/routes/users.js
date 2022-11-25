@@ -1,4 +1,5 @@
 const { response } = require('express');
+const bcrypt = require("bcrypt")
 var express = require('express');
 var multer = require('multer');
 var router = express.Router();
@@ -143,12 +144,13 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
 
 router.post('/createAccount', upload.none(), function(req, res) {
   console.log(req.body);
-  let sql = `INSERT INTO createdUsers(username,email,pass) VALUES (?)`;
+  let hash = bcrypt.hashSync(req.body.pass, 12)
   let values = [
     req.body.username,
     req.body.email,
-    req.body.pass,
+    hash,
   ];
+  let sql = `INSERT INTO createdUsers(username,email,pass) VALUES (?)`;
   db.query(sql, [values], function(err, data, fields) {
     if (err) throw err;
     res.redirect('http://localhost:7777/login.html');
