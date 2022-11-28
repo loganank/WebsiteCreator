@@ -1,5 +1,5 @@
 const { response } = require('express');
-//const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt")
 var express = require('express');
 var multer = require('multer');
 var router = express.Router();
