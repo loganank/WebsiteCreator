@@ -1,5 +1,5 @@
 const { response } = require('express');
-const bcrypt = require("bcrypt")
+//const bcrypt = require("bcrypt")
 var express = require('express');
 var multer = require('multer');
 var router = express.Router();
@@ -122,6 +122,7 @@ router.post('/userInfo', upload.fields(
       if(err) throw err;
       res.render('generated.ejs', {user: user});
     });
+    res.redirect('../generated.html'); // redirect after post
 });
 
 // create new questionaire
@@ -157,7 +158,7 @@ router.post('/createAccount', upload.none(), function(req, res) {
   })
 });
 
-router.get('/Auth', (req, res) => {
+/*router.get('/Auth', (req, res) => {
   var username = req.body.loginUsername;
   var password = req.body.loginPassword;
   connection.query(
@@ -169,6 +170,6 @@ router.get('/Auth', (req, res) => {
    );
    // Not Ok, don't have password here
    console.log(connection.threadId); //Value is not undefined
-  });
+  });*/
 
 module.exports = router;
