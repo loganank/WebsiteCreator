@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <title>Generated</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./stylesheets/generated.css">
+    <link rel="stylesheet" href="/public/stylesheets/generated.css">
     <link rel="shortcut icon" type="image/ico" href="./images/question_mark.jpg">
     <style>
     </style>
@@ -21,16 +21,16 @@
         additional info -->
         <script src="./javascripts/generated.js"></script>
         <h1 name="name_title" class="profile"><%=user.name%></h1>
-        <img name="profile_picture" class="profile" src=<%=user.propic%>>
+        <img name="profile_picture" class="profile" src="/public/pdfs/<%=user.propic%>">
         <h1 name="email_title">Email</h1>
         <p><%=user.email%></p>
         <h1 name="description_title">Description</h1>
         <p name="description"><%=user.desc%></p>
         <h1 name="resume_title">Resume</h1>
-        <a href=<%=user.userResume%>>View Resume</a>
+        <a href="/public/pdfs/<%=user.userResume%>">View Resume</a>
         <h1 name="video_title">Project Video</h1>
         <video name="video" width="480" height="360" controls>
-            <source src=<%=user.vid%> type="video/mp4">
+            <source src="/public/videos/<%=user.vid%>" type="video/mp4">
             Your browser does not support the video tag.
         </video> 
         <h1 name="skills_title">Skills</h1>

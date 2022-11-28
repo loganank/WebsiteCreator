@@ -4,13 +4,17 @@ var express = require('express');
 var multer = require('multer');
 var router = express.Router();
 var path = require('path');
+console.log(path);
 require.main.filename;
 const PDFDIR = path.join(__dirname, '../public/pdfs/');
+const IMGDIR = path.join(__dirname, '../public/images/');
 const VIDDIR = path.join(__dirname, '../public/videos/');
 var storage = multer.diskStorage({
   destination: function(req, file, cb){
-    if(file.fieldname == 'resume' || file.fieldname == 'profilepic'){
+    if(file.fieldname == 'resume'){
       cb(null, PDFDIR);
+    }else if(file.fieldname == 'profilepic'){
+      cb(null, IMGDIR);
     }else{
       cb(null, VIDDIR);
     }},
@@ -24,18 +28,13 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 var app = express();
+var user;
 
-// router.get("/resume", function(req, res, next){
-//   var query = "SELECT * FROM resumes WHERE username = 'kyle@gmail.com'";
-//   db.query(query, function(err, data){
-//     if(err){
-//       throw error;
-//     }else{
-//       user.userResume = req.body.resume_location;
-//       response.render();
-//     }
-//   });
-// });
+router.get('/', (req, res) => {
+  console.log("hello");
+   res.send("hello");
+   console.log(res);
+});
 
 // create new user
 router.post('/userInfo', upload.fields(
@@ -56,23 +55,23 @@ router.post('/userInfo', upload.fields(
 ), function(req, res) {
   console.log(req.body);   
   console.log(req.files);
-  const user = {
+  var skills = req.body.skills.substring(0, req.body.skills.length-3);
+  user = {
     name: req.body.actualname,
-    propic: "../public/pdfs/"+req.files['profilepic'][0].filename,
+    propic: req.files['profilepic'][0].filename,
     email: req.body.email,
     desc: req.body.about_me,
-    userResume: "",// "../public/pdfs/"+req.files['resume'][0].filename,
-    vid: "../public/videos/"+req.files['projectvid'][0].filename,
-    skillz: req.body.skills,
+    userResume: req.files['resume'][0].filename,
+    vid: req.files['projectvid'][0].filename,
+    skillz: skills,
     addinfo: req.body.additionalinfo,
   };
 
   let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  let userInfo = `INSERT INTO userInfo(actualname, username, pass, email, about_me, skills, additionalinfo) VALUES (?)`;
+  let userInfo = `INSERT INTO userInfo(actualname, username, email, about_me, skills, additionalinfo) VALUES (?)`;
   let values = [
     req.body.actualname,
     req.body.email,
-    "password",
     req.body.email,
     req.body.about_me,
     req.body.skills,
@@ -88,7 +87,7 @@ router.post('/userInfo', upload.fields(
   //save resume
   var resql = 'INSERT INTO `resumes`(`resume_location`, `username`, `date_added`) VALUES (?)';
   let resValues = [
-    PDFDIR+req.files['resume'][0].filename,
+    "/public/pdfs/"+req.files['resume'][0].filename,
     req.body.email,
     date
   ];
@@ -104,7 +103,7 @@ router.post('/userInfo', upload.fields(
   //save vid
   let vid = 'INSERT INTO videos(vid_location, username, date_added) VALUES (?)';
   let vidValues = [
-    VIDDIR+req.files['projectvid'][0].filename,
+    "/public/videos/"+req.files['projectvid'][0].filename,
     req.body.email,
     date
   ];
@@ -114,15 +113,15 @@ router.post('/userInfo', upload.fields(
     //save profile pic
     let pic = 'INSERT INTO pics(pic_location, username, date_added) VALUES (?)';
     let picValues = [
-      PDFDIR+req.files['profilepic'][0].filename,
+      "/public/images/" +req.files['profilepic'][0].filename,
       req.body.email,
       date
     ];
     db.query(pic, [picValues], function(err, data, fields){
       if(err) throw err;
-      res.render('generated.ejs', {user: user});
+      //res.render('generated.ejs', {user: user});
     });
-    res.redirect('../generated.html'); // redirect after post
+   res.redirect('generated'); // redirect after post
 });
 
 // create new questionaire
@@ -139,7 +138,7 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
     ];
     db.query(sql, [values], function(err, data, fields) {
       if (err) throw err;
-      res.redirect('http://localhost:7777/index.html');
+      res.redirect('/');
     })
 });
 
@@ -154,9 +153,16 @@ router.post('/createAccount', upload.none(), function(req, res) {
   let sql = `INSERT INTO createdUsers(username,email,pass) VALUES (?)`;
   db.query(sql, [values], function(err, data, fields) {
     if (err) throw err;
-    res.redirect('http://localhost:7777/login.html');
+    res.redirect('/');
   })
 });
+
+router.get('/generated', (req, res) => {
+  res.render("generated", {user:user});
+});
+
+
+
 
 /*router.get('/Auth', (req, res) => {
   var username = req.body.loginUsername;
