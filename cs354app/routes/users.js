@@ -29,6 +29,8 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage});
 var app = express();
 var user;
+const saltRounds = 12;
+var salt = bcrypt.genSaltSync(saltRounds);
 
 router.get('/', (req, res) => {
   console.log("hello");
@@ -144,7 +146,7 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
 
 router.post('/createAccount', upload.none(), function(req, res) {
   console.log(req.body);
-  let hash = bcrypt.hashSync(req.body.pass, 12)
+  let hash = bcrypt.hashSync(req.body.pass, salt);
   let values = [
     req.body.username,
     req.body.email,
@@ -162,20 +164,60 @@ router.get('/generated', (req, res) => {
 });
 
 
-
-
-/*router.get('/Auth', (req, res) => {
+router.post('/Auth', upload.none(), function(req, res) {
+  console.log("authenticating user info...");
   var username = req.body.loginUsername;
   var password = req.body.loginPassword;
-  connection.query(
-   'SELECT * FROM createdUsers where username=? AND pass=?', [username,password], 
-   function(err, rows, fields) {
-     password = extractpasswordfromrows(rows);//iterate and get result
-     res.send(200, { success: password }); // Ok, have password here
-     }
-   );
-   // Not Ok, don't have password here
-   console.log(connection.threadId); //Value is not undefined
-  });*/
+  console.log("username: "+ username +"\nplaintext pass: "+req.body.loginPassword);
+  if (username && password) {
+		// Execute SQL query that'll select the account from the database based on the specified username and password
+		db.query('SELECT pass FROM createdUsers WHERE username = ?', username, function(error, result, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (result.length > 0) {
+        if(res.headersSent){
+          console.log("headers sent");
+        }
+        bcrypt.compare(password, result[0].pass, function(err, r){
+          if(res.headersSent){
+            console.log("headers sent");
+          }
+          if(r){
+            // put session variables here if we get time
+            // Redirect to home page
+            console.log("Yay password is true - in bcrypt compare - redirecting to index");
+            res.redirect('/index');
+          }else{
+            res.send('Incorrect Username and/or Password!');
+          }
+        });
+      }else{
+        res.send('Incorrect Username and/or Password!');
+      }
+    });
+  }else{
+    res.send('Incorrect Username and/or Password!');
+  }     
+});
+
+router.get('/generated', (req, res) => {
+  res.render("generated", {user:user});
+});
+
+// router.post('/users/Auth', (req, res) => {
+//   console.log("authenticating user info...");
+//   var username = req.body.loginUsername;
+//   var password = req.body.loginPassword;
+//   connection.query(
+//    , [username,password], 
+//    function(err, rows, fields) {
+//      password = extractpasswordfromrows(rows);//iterate and get result
+//      res.send(200, { success: password }); // Ok, have password here
+//      }
+//    );
+//    // Not Ok, don't have password here
+//    console.log(connection.threadId); //Value is not undefined
+//   });
 
 module.exports = router;

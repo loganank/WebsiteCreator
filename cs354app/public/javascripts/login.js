@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () =>
     //when you click create account link, hide login form, show create account form
     document.querySelector("#linkCreateAccount").addEventListener("click", e => 
     {
+        console.log("creating new accout...")
         //prevent default link to href
         e.preventDefault();
         //when click create account, hide login form
@@ -58,30 +59,30 @@ document.addEventListener("DOMContentLoaded", () =>
         createAccountForm.classList.add("form--hidden");
     });
 
-    //upon submitting login form, grab event object
-    loginForm.addEventListener("submit", e => 
-    {
-        //prevent form from being submitted through page refresh or submission
-        e.preventDefault();
+    // //upon submitting login form, grab event object
+    // loginForm.addEventListener("submit", e => 
+    // {
+    //     //prevent form from being submitted through page refresh or submission
+    //     e.preventDefault();
         
         
 
-        let loginUsername=document.getElementById("loginUsername").value;
-        let loginPassword=document.getElementById("loginPassword").value;
+    //     let loginUsername=document.getElementById("loginUsername").value;
+    //     let loginPassword=document.getElementById("loginPassword").value;
         
         
         
-        if (loginUsername == "username" && loginPassword == "password")
-        {
-            alert("login successful!");
-            window.location.replace("index.html")
-            return false;
-        }
+    //     if (loginUsername == "username" && loginPassword == "password")
+    //     {
+    //         alert("login successful!");
+    //         window.location.replace("/index")
+    //         return false;
+    //     }
 
-        else {
-            setFormMessage(loginForm, "error", "Invalid username/password");
-        }
-    });
+    //     else {
+    //         setFormMessage(loginForm, "error", "Invalid username/password");
+    //     }
+    // });
 
     //upon submitting createaccount form, grab event object
     createAccountForm.addEventListener("submit", e => 
