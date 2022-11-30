@@ -59,12 +59,11 @@ document.addEventListener("DOMContentLoaded", () =>
         createAccountForm.classList.add("form--hidden");
     });
 
-    // //upon submitting login form, grab event object
+    //upon submitting login form, grab event object
     // loginForm.addEventListener("submit", e => 
     // {
-    //     //prevent form from being submitted through page refresh or submission
+    //     prevent form from being submitted through page refresh or submission
     //     e.preventDefault();
-        
         
 
     //     let loginUsername=document.getElementById("loginUsername").value;
@@ -87,15 +86,17 @@ document.addEventListener("DOMContentLoaded", () =>
     //upon submitting createaccount form, grab event object
     createAccountForm.addEventListener("submit", e => 
     {
-
+        
         let username=document.getElementById("username").value;
         let email=document.getElementById("email").value;
         let pass=document.getElementById("pass").value;
         let pass2=document.getElementById("pass2").value;
 
+        if (pass != pass2) {
+            e.preventDefault();
+        }
 
-        if (pass == pass2)
-        {
+        if (pass == pass2) {
             //alert("password confirmation successful!");
             
             //when click login, remove login from hidden
@@ -106,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () =>
         }
 
         else {
-            setFormMessage(createAccountForm, "error", "Password Confirmation Failed");
+            setFormMessage(createAccountForm, "error", "Password Confirmation Failed - Ensure Passwords Match");
         }
     });
 

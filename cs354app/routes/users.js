@@ -189,15 +189,18 @@ router.post('/Auth', upload.none(), function(req, res) {
             console.log("Yay password is true - in bcrypt compare - redirecting to index");
             res.redirect('/index');
           }else{
-            res.send('Incorrect Username and/or Password!');
+            //res.send('Incorrect Username and/or Password!');
+            res.redirect('/login');
           }
         });
       }else{
-        res.send('Incorrect Username and/or Password!');
+        //res.send('Incorrect Username and/or Password!');
+        res.redirect('/login');
       }
     });
   }else{
-    res.send('Incorrect Username and/or Password!');
+    //res.send('Incorrect Username and/or Password!');
+    res.redirect('/login');
   }     
 });
 
