@@ -13,10 +13,19 @@ if(pic){
 }
 if(submit) {
   submit.addEventListener('click', function (event) {
+    // all of the fields in the form
     var username = document.getElementById('username');
-    var email = document.getElementById('email')
-    var valid = new Boolean(true);
-    var msg = "";
+    var email = document.getElementById('email');
+    var resume = document.getElementById('uploadResId');
+    var aboutMe = document.getElementById('aboutMe');
+    var additionalInfo = document.getElementById('additionalInfo');
+    var projVid = document.getElementById('uploadVidId');
+    var profPic = document.getElementById('uploadPicId');
+    var resume = document.getElementById('uploadResId');
+
+
+    var valid = new Boolean(true); // whether there are any errors
+    var msg = "";                  // the validation message
 
     if (username.value == "") {
       valid = false;
@@ -25,6 +34,31 @@ if(submit) {
     if (email.value == "") {
       valid = false;
       msg += "Please enter an email\n";
+    }
+
+    if (aboutMe.value == "") {
+      valid = false;
+      msg += "Please fill out the 'About yourself' section\n";
+    }
+
+    if (resume.value == "") {
+      valid = false;
+      msg += "Please enter a resume\n";
+    }
+
+    if (projVid.value == "") {
+      valid = false;
+      msg += "Please enter a project video\n";
+    }
+
+    if (profPic.value == "") {
+      valid = false;
+      msg += "Please enter a profile picture\n";
+    }
+
+    if (additionalInfo.value == "") {
+      valid = false;
+      msg += "Please fill out the 'Additional Info' section\n";
     }
 
     var skills = document.getElementsByClassName("skill");
