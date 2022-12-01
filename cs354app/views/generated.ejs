@@ -19,23 +19,26 @@
         videos
         skills
         additional info -->
-        <script src="./javascripts/generated.js"></script>
-        <h1 name="name_title" class="profile"><%=user.name%></h1>
-        <img name="profile_picture" class="profile" src="/public/images/<%=user.propic%>">
-        <h1 name="email_title">Email</h1>
-        <p><%=user.email%></p>
-        <h1 name="description_title">Description</h1>
-        <p name="description"><%=user.desc%></p>
-        <h1 name="resume_title">Resume</h1>
-        <a href="/public/pdfs/<%=user.userResume%>">View Resume</a>
-        <h1 name="video_title">Project Video</h1>
-        <video name="video" width="480" height="360" controls>
-            <source src="/public/videos/<%=user.vid%>" type="video/mp4">
-            Your browser does not support the video tag.
-        </video> 
-        <h1 name="skills_title">Skills</h1>
-        <p name="skill_1"><%=user.skillz%></p>
-        <h1 name="additional_description_title">Additional Information</h1>
-        <p name="additional_description"><%=user.addinfo%></p>
+        <script src="/public/javascripts/generated.js"></script>
+        <form class="form" id="generated_form" name="generatedForm" action="/users/downloadGenerated" method="post" enctype="multipart/form-data">
+            <h1 name="name_title" class="profile"><%=user.name%></h1>
+            <img name="profile_picture" class="profile" src="/public/images/<%=user.propic%>">
+            <h1 name="email_title">Email</h1>
+            <p><%=user.email%></p>
+            <h1 name="description_title">Description</h1>
+            <p name="description"><%=user.desc%></p>
+            <h1 name="resume_title">Resume</h1>
+            <a href="/public/pdfs/<%=user.userResume%>">View Resume</a>
+            <h1 name="video_title">Project Video</h1>
+            <video name="video" width="480" height="360" controls>
+                <source src="/public/videos/<%=user.vid%>" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+            <h1 name="skills_title">Skills</h1>
+            <p name="skill_1"><%=user.skillz%></p>
+            <h1 name="additional_description_title">Additional Information</h1>
+            <p name="additional_description"><%=user.addinfo%></p>
+            <input type="submit" value="Download" id="submit" />
+        </form>
     </div>
 </body>

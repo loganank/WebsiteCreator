@@ -143,6 +143,18 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
     })
 });
 
+// create download generated
+router.post('/downloadGenerated', upload.none(), function(req, res) {
+  console.log("in submit questionaire");
+  res.redirect('/index');
+});
+
+/*router.get('/downloadGenerated', (req, res) => {
+  console.log("download");
+  res.redirect('/index');
+});*/
+
+
 router.post('/createAccount', upload.none(), function(req, res) {
   console.log(req.body);
   let hash = bcrypt.hashSync(req.body.pass, salt);
@@ -202,24 +214,5 @@ router.post('/Auth', upload.none(), function(req, res) {
     res.redirect('/login');
   }     
 });
-
-router.get('/generated', (req, res) => {
-  res.render("generated", {user:user});
-});
-
-// router.post('/users/Auth', (req, res) => {
-//   console.log("authenticating user info...");
-//   var username = req.body.loginUsername;
-//   var password = req.body.loginPassword;
-//   connection.query(
-//    , [username,password], 
-//    function(err, rows, fields) {
-//      password = extractpasswordfromrows(rows);//iterate and get result
-//      res.send(200, { success: password }); // Ok, have password here
-//      }
-//    );
-//    // Not Ok, don't have password here
-//    console.log(connection.threadId); //Value is not undefined
-//   });
 
 module.exports = router;
