@@ -121,9 +121,8 @@ router.post('/userInfo', upload.fields(
     ];
     db.query(pic, [picValues], function(err, data, fields){
       if(err) throw err;
-      //res.render('generated.ejs', {user: user});
+      res.render('generated.ejs', {user: user});
     });
-   res.redirect('generated'); // redirect after post
 });
 
 // create new questionaire
