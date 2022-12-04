@@ -19,8 +19,7 @@
         videos
         skills
         additional info -->
-        <script src="/public/javascripts/generated.js"></script>
-        <form class="form" id="generated_form" name="generatedForm" action="/users/downloadGenerated" method="post" enctype="multipart/form-data">
+        <form class="form" id="generated_form" name="generatedForm" action="/users/downloadGenerated" method="POST" enctype="multipart/form-data">
             <h1 name="name_title" class="profile"><%=user.name%></h1>
             <img name="profile_picture" class="profile" src="/public/images/<%=user.propic%>">
             <h1 name="email_title">Email</h1>

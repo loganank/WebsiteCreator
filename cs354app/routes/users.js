@@ -4,6 +4,8 @@ var express = require('express');
 var multer = require('multer');
 var router = express.Router();
 var path = require('path');
+var JSZip = require('jszip');
+var FileSaver = require('file-saver');
 console.log(path);
 require.main.filename;
 const PDFDIR = path.join(__dirname, '../public/pdfs/');
@@ -145,15 +147,17 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
 
 // create download generated
 router.post('/downloadGenerated', upload.none(), function(req, res) {
-  console.log("in submit questionaire");
+  console.log("in download generated");
+  const zip = new JSZip();
+  zip.file('idlist.txt', 'PMID:29651880\r\nPMID:29303721');
+  console.log("in download generated 2");
+  zip.generateAsync({ type: 'blob' }).then(function (content) {
+    FileSaver.saveAs(content, 'download.zip');
+  });
+  console.log("in download generated 3");
   res.redirect('/index');
+  console.log("in download generated 4");
 });
-
-/*router.get('/downloadGenerated', (req, res) => {
-  console.log("download");
-  res.redirect('/index');
-});*/
-
 
 router.post('/createAccount', upload.none(), function(req, res) {
   console.log(req.body);
