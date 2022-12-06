@@ -27,7 +27,6 @@ function clearInputError(inputElement) {
 function validateForm() {
     let numberError, textError = false;
 
-    var email = sessionStorage.getItem("email");
     for (let i = 1; i <= 4; i++) {
         let element = document.getElementById("answer_" + i);
         let answer = element.value;
@@ -50,8 +49,6 @@ function validateForm() {
     } else if (textError) {
         setFormMessage(questionaireForm, "error", "You left the last question blank.");
     } else {
-        let email = sessionStorage.getItem("email");
-        document.getElementById("email").value = email;
         document.questionaireForm.submit();
     }
 }

@@ -4,8 +4,6 @@ var express = require('express');
 var multer = require('multer');
 var router = express.Router();
 var path = require('path');
-var JSZip = require('jszip');
-var FileSaver = require('file-saver');
 console.log(path);
 require.main.filename;
 const PDFDIR = path.join(__dirname, '../public/pdfs/');
@@ -130,9 +128,8 @@ router.post('/userInfo', upload.fields(
 // create new questionaire
 router.post('/submitQuestionaire', upload.none(), function(req, res) {
   console.log("in submit questionaire");
-  let sql = `INSERT INTO answers(username, answer_1, answer_2, answer_3, answer_4, answer_5) VALUES (?)`;
+  let sql = `INSERT INTO answers(answer_1, answer_2, answer_3, answer_4, answer_5) VALUES (?)`;
     let values = [
-      req.body.email,
       req.body.answer_1,
       req.body.answer_2,
       req.body.answer_3,
@@ -146,17 +143,20 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
 });
 
 // create download generated
-router.post('/downloadGenerated', upload.none(), function(req, res) {
-  console.log("in download generated");
-  const zip = new JSZip();
-  zip.file('idlist.txt', 'PMID:29651880\r\nPMID:29303721');
-  console.log("in download generated 2");
-  zip.generateAsync({ type: 'blob' }).then(function (content) {
-    FileSaver.saveAs(content, 'download.zip');
-  });
-  console.log("in download generated 3");
-  res.redirect('/index');
-  console.log("in download generated 4");
+router.get('/downloadGenerated', function(req, res) {
+  var generatedFile = path.join(__dirname, '../views/generated.ejs');
+  res.download(generatedFile);
+});
+
+// create download css
+router.get('/downloadCSS', function(req, res) {
+  var cssFile = path.join(__dirname, '../public/stylesheets/generated.css');
+  res.download(cssFile); // Set disposition and send it.
+});
+
+// create download css
+router.get('/toQuestionaire', function(req, res) {
+  res.redirect('/questionaire');
 });
 
 router.post('/createAccount', upload.none(), function(req, res) {

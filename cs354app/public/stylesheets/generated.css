@@ -85,7 +85,7 @@
       border-radius: 15px 15px 15px 0px;
   }
   
-  .generated_container input[type="button"]
+  .generated_container input[type="submit"]
   {
       position: relative;
       display: block;

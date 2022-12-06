@@ -63,14 +63,12 @@ FOREIGN KEY (user_id) REFERENCES userInfo(user_id)
 );
 CREATE TABLE IF NOT EXISTS answers(
 answer_id INT AUTO_INCREMENT,
-username VARCHAR(50),
 answer_1 INT NOT NULL,
 answer_2 INT NOT NULL,
 answer_3 INT NOT NULL,
 answer_4 INT NOT NULL,
 answer_5 VARCHAR(1000),
-PRIMARY KEY (answer_id),
-FOREIGN KEY (username) REFERENCES userInfo(username)
+PRIMARY KEY (answer_id)
 );
 
 CREATE TABLE IF NOT EXISTS createdUsers(

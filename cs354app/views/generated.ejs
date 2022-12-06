@@ -11,33 +11,32 @@
 
 <body>
     <div class="generated_container">
-        <!-- name
-        profile picture
-        email
-        description
-        resume
-        videos
-        skills
-        additional info -->
-        <form class="form" id="generated_form" name="generatedForm" action="/users/downloadGenerated" method="POST" enctype="multipart/form-data">
-            <h1 name="name_title" class="profile"><%=user.name%></h1>
-            <img name="profile_picture" class="profile" src="/public/images/<%=user.propic%>">
-            <h1 name="email_title">Email</h1>
-            <p><%=user.email%></p>
-            <h1 name="description_title">Description</h1>
-            <p name="description"><%=user.desc%></p>
-            <h1 name="resume_title">Resume</h1>
-            <a href="/public/pdfs/<%=user.userResume%>">View Resume</a>
-            <h1 name="video_title">Project Video</h1>
-            <video name="video" width="480" height="360" controls>
-                <source src="/public/videos/<%=user.vid%>" type="video/mp4">
-                Your browser does not support the video tag.
-            </video> 
-            <h1 name="skills_title">Skills</h1>
-            <p name="skill_1"><%=user.skillz%></p>
-            <h1 name="additional_description_title">Additional Information</h1>
-            <p name="additional_description"><%=user.addinfo%></p>
-            <input type="submit" value="Download" id="submit" />
+        <h1 name="name_title" id="name_title" class="profile"><%=user.name%></h1>
+        <img name="profile_picture" class="profile" src="/public/images/<%=user.propic%>">
+        <h1 name="email_title">Email</h1>
+        <p><%=user.email%></p>
+        <h1 name="description_title">Description</h1>
+        <p name="description"><%=user.desc%></p>
+        <h1 name="resume_title">Resume</h1>
+        <a href="/public/pdfs/<%=user.userResume%>">View Resume</a>
+        <h1 name="video_title">Project Video</h1>
+        <video name="video" width="480" height="360" controls>
+            <source src="/public/videos/<%=user.vid%>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video> 
+        <h1 name="skills_title">Skills</h1>
+        <p name="skill_1"><%=user.skillz%></p>
+        <h1 name="additional_description_title">Additional Information</h1>
+        <p name="additional_description"><%=user.addinfo%></p>
+        
+        <form class="form" id="download_generated_form" name="downloadGeneratedForm" action="/users/downloadGenerated" method="GET">
+            <input type="submit" value="Download HTML" id="submit" />
+         </form>
+        <form class="form" id="download_css_form" name="downloadCSSForm" action="/users/downloadCSS" method="GET">
+           <input type="submit" value="Download CSS" id="submit" />
         </form>
+        <form class="form" id="to_questionaire_form" name="toQuestionaireForm" action="/users/toQuestionaire" method="GET">
+            <input type="submit" value="Questionaire" id="submit" />
+         </form>
     </div>
 </body>
