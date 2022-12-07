@@ -25,7 +25,10 @@
             Your browser does not support the video tag.
         </video> 
         <h1 name="skills_title">Skills</h1>
-        <p name="skill_1"><%=user.skillz%></p>
+        <%for(var i=0; i < user.skillz.length; i++){%>
+            <p name="skill"><%=user.skillz[i]%></p>
+        <%}%>        
+        <!-- <p name="skill"><%=user.skillz[i]%></p> -->
         <h1 name="additional_description_title">Additional Information</h1>
         <p name="additional_description"><%=user.addinfo%></p>
         

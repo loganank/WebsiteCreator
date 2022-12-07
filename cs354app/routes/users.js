@@ -57,7 +57,11 @@ router.post('/userInfo', upload.fields(
 ), function(req, res) {
   console.log(req.body);   
   console.log(req.files);
-  var skills = req.body.skills.substring(0, req.body.skills.length-3);
+  var skills = [];
+  for(var i =0; i < req.body.skills.length; i++){
+    skills.push(req.body.skills[i]);
+  }
+  console.log("SKILLS: "+ skills);
   user = {
     name: req.body.actualname,
     propic: req.files['profilepic'][0].filename,
@@ -70,13 +74,12 @@ router.post('/userInfo', upload.fields(
   };
 
   let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  let userInfo = `INSERT INTO userInfo(actualname, username, email, about_me, skills, additionalinfo) VALUES (?)`;
+  let userInfo = `INSERT INTO userInfo(actualname, username, email, about_me, additionalinfo) VALUES (?)`;
   let values = [
     req.body.actualname,
     req.body.email,
     req.body.email,
     req.body.about_me,
-    req.body.skills,
     req.body.additionalinfo
   ];
   db.query(userInfo, [values], function(err, data, fields) {
@@ -86,6 +89,25 @@ router.post('/userInfo', upload.fields(
       console.log("userInfo insert success!")
     } 
 });
+  //save skills
+  var skillsql = 'INSERT INTO skills(username, skill) VALUES (?)';
+  for(var i = 0; i < req.body.skills.length; i++){
+    let newSkill = req.body.skills[i];
+    console.log("skill:" + newSkill);
+    let skillvalues = [
+      req.body.email,
+      newSkill
+    ];
+    console.log("SKILLVALUES: "+ skillvalues);
+    db.query(skillsql, [skillvalues], function(err, data, fields) {
+      if (err){
+        throw err;   
+      }else{
+        console.log("skills insert success!")
+      } 
+    });
+  } 
+  
   //save resume
   var resql = 'INSERT INTO `resumes`(`resume_location`, `username`, `date_added`) VALUES (?)';
   let resValues = [
