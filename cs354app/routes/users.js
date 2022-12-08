@@ -164,12 +164,6 @@ router.post('/submitQuestionaire', upload.none(), function(req, res) {
     })
 });
 
-// create download generated
-router.get('/downloadGenerated', function(req, res) {
-  var generatedFile = path.join(__dirname, '../views/generated.ejs');
-  res.download(generatedFile);
-});
-
 // create download css
 router.get('/downloadCSS', function(req, res) {
   var cssFile = path.join(__dirname, '../public/stylesheets/generated.css');

@@ -32,14 +32,16 @@
         <h1 name="additional_description_title">Additional Information</h1>
         <p name="additional_description"><%=user.addinfo%></p>
         
-        <form class="form" id="download_generated_form" name="downloadGeneratedForm" action="/users/downloadGenerated" method="GET">
-            <input type="submit" value="Download HTML" id="submit" />
-         </form>
+        <button type="button">
+            <a type="button" style="text-decoration: none;color: inherit;" onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="yourwebsite.html">Download Website</a>
+        </button> 
+        
         <form class="form" id="download_css_form" name="downloadCSSForm" action="/users/downloadCSS" method="GET">
            <input type="submit" value="Download CSS" id="submit" />
-        </form>
+        </form>   
+
         <form class="form" id="to_questionaire_form" name="toQuestionaireForm" action="/users/toQuestionaire" method="GET">
             <input type="submit" value="Questionaire" id="submit" />
-         </form>
+        </form>
     </div>
 </body>
