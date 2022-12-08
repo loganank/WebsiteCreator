@@ -17,7 +17,7 @@ usersRouter = require('./routes/users');
 db = mysql.createConnection({
 host: '127.0.0.1',
 user: 'root',
-password: '',
+password: 'mysqldatabase',
 database: 'cs354'
 })
 
