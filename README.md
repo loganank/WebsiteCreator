@@ -12,5 +12,5 @@ You also need a dependency to encrypt the passwords: npm install bcrypt. After t
 install mysql, and create a database with the password ”mysqldatabase”. After this, open
 up generate tables.sql in db scripts in our project, copy into mysql workbench (or any db
 manager), and run the script. Now we can start the server in vscode: npm start local-
-host:7777. Now go to any browswer and type localhost:7777 into the search bar to use our
+host:7777. Now go to any browser and type localhost:7777 into the search bar to use our
 website.
